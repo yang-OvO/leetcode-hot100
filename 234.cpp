@@ -12,8 +12,6 @@
     public:
         std::generator<ListNode*> getReverseNodes(ListNode* cur)
         {
-            if (!cur)
-                co_return;
             if (cur->next) {
                 co_yield std::ranges::elements_of(getReverseNodes(cur->next));
             }
@@ -38,9 +36,9 @@
         {
             if (!cur)
                 return;
+            isPalindrome2Impl(cur->next, front, short_cuts);
             if (short_cuts)
                 return;
-            isPalindrome2Impl(cur->next, front, short_cuts);
             if (cur->val != front->val) {
                 short_cuts = true;
                 return;
