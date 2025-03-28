@@ -14,7 +14,7 @@
         {
             if (!cur)
                 co_return;
-            if (!cur->next) {
+            if (cur->next) {
                 co_yield std::ranges::elements_of(getReverseNodes(cur->next));
             }
             co_yield cur;
