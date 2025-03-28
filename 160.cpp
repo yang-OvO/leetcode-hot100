@@ -56,6 +56,16 @@ public:
         return nullptr;
     }
 
+    ListNode *getIntersectionNode3(ListNode *headA, ListNode *headB) 
+    {
+        ListNode* ptrA = headA, *ptrB = headB;
+        while (ptrA != ptrB) {
+            ptrA = ptrA == nullptr? headB: ptrA->next;
+            ptrB = ptrB == nullptr? headA: ptrB->next;
+        }
+        return ptrA;
+    }
+
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         
     }
