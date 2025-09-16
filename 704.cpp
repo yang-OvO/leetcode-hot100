@@ -1,6 +1,8 @@
 
+#include <algorithm>
+
 template <typename ForwardIt, typename ValueT>
-ForwardIt BinraySearch(ForwardIt begin, ForwardIt end, ValueT value)
+ForwardIt BinraySearch(ForwardIt begin, ForwardIt end, const ValueT& value)
 {
     ForwardIt left = begin;
     ForwardIt right = std::next(begin, std::distance(begin, end)-1);
@@ -27,11 +29,13 @@ ForwardIt BinraySearch(ForwardIt begin, ForwardIt end, ValueT value)
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        auto it = BinraySearch(nums.begin(), nums.end(), target);
-        if (it == nums.end()) {
+        namespace ranges = std::ranges;
+        auto it = ranges::lower_bound(nums, target);
+        // If not found or value is greater than target
+        if (it == ranges::end(nums) || *it > target) {
             return -1;
         } else {
-            return std::distance(nums.begin(), it);
+            return ranges::distance(nums.cbegin(), it);
         }
     }
 };

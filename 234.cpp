@@ -8,6 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+#include <generator>
 class Solution {
 public:
     #ifdef __cpp_lib_generator
