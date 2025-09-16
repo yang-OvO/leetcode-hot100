@@ -15,13 +15,13 @@ public:
         if (!head) {
             return nullptr;
         }
-        if (head->next) {
-            ListNode* reversed = reverseList1(head->next);
-            head->next->next = head;
-            head->next = nullptr;
-            return reversed;
+        if (head->next == nullptr) {
+            return head;
         }
-        return head;
+        ListNode * reversed = reverseList1(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return reversed;
     }
 
     ListNode* reverseList(ListNode* head) {
